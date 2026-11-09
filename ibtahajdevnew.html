@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ibtahajdev.site - Earning Platforms Directory</title>
+
+    <!-- Google Tag Manager -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    </script>
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KCJX7KG5"></script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5532200722499397"
+     crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #10b981;
+            --primary-hover: #059669;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+        body.light-mode {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --primary: #059669;
+            --primary-hover: #047857;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text);
+            padding: 16px;
+            padding-bottom: 140px;
+            display: flex;
+            justify-content: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container { width: 100%; max-width: 600px; }
+
+        .header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 8px; }
+        .header-title { font-size: 1.2rem; font-weight: bold; }
+        .header-actions { display: flex; gap: 6px; }
+        .header-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .header-btn:hover { color: var(--text); border-color: var(--primary); }
+
+        .banner {
+            display: none;
+            background-color: #1e3a8a;
+            color: #bfdbfe;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            margin-bottom: 16px;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        body.light-mode .banner { background-color: #dbeafe; color: #1e40af; }
+        .banner button {
+            background: none;
+            border: 1px solid currentColor;
+            color: inherit;
+            padding: 3px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            margin-left: 4px;
+        }
+
+        .search-input {
+            width: 100%;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 12px;
+            outline: none;
+        }
+        .search-input:focus { border-color: var(--primary); }
+        .tabs-container { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 8px; }
+        .tab {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .tab.active { background-color: #2563eb; color: #fff; border-color: #2563eb; }
+        .showing-count { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-bottom: 16px; }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .pro-card { border-color: var(--primary); }
+        .platform-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .platform-name { font-weight: bold; font-size: 1rem; flex: 1; }
+        .platform-meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.75rem; margin-bottom: 12px; }
+        .rating { color: #f59e0b; font-weight: bold; }
+        .min-payout { color: var(--primary); font-weight: 600; }
+        .category-tag { color: var(--text-muted); }
+        #no-results { display: none; text-align: center; color: var(--text-muted); padding: 20px 0; }
+
+        .blog-item { padding: 10px 0; border-bottom: 1px solid var(--border); }
+        .blog-item:last-child { border-bottom: none; }
+        .blog-title { font-size: 0.9rem; font-weight: bold; color: var(--text); text-decoration: none; display: block; margin-bottom: 4px; cursor: pointer; }
+        .blog-title:hover { color: var(--primary); }
+
+        .forum-post { background: var(--bg-color); border-radius: 8px; padding: 10px; margin-bottom: 8px; font-size: 0.85rem; word-wrap: break-word; }
+        .forum-author { font-weight: bold; color: var(--primary); margin-bottom: 4px; }
+
+        .floating-shahbot {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 9999;
+            background-color: var(--primary);
+            color: #000;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+        .floating-shahbot:hover { background-color: var(--primary-hover); }
+
+        .btn-action {
+            background-color: var(--primary);
+            color: #000;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+        .btn-action:hover { background-color: var(--primary-hover); }
+        .btn-secondary { background-color: transparent; border: 1px solid var(--border); color: var(--text); font-weight: 500; }
+        .btn-secondary:hover { background-color: var(--border); }
+        .inline-btn { width: auto; margin-top: 0; padding: 10px 16px; }
+
+        .form-control {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            font-family: inherit;
+        }
+        .form-control:focus { border-color: var(--primary); }
+        .form-row { display: flex; gap: 8px; }
+        .form-row .form-control { flex: 1; min-width: 0; }
+        .muted { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; margin-bottom: 12px; }
+        h3 { margin-top: 0; }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 16px;
+        }
+        .modal {
+            background: var(--card-bg);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-close { position: absolute; top: 12px; right: 12px; background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; }
+
+        .site-footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+        }
+        .site-footer a { color: var(--primary); text-decoration: none; margin: 0 6px; }
+        .site-footer a:hover { text-decoration: underline; }
+
+        /* ShahBot chat */
+        #chat-window {
+            display: none;
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            width: 360px;
+            max-width: calc(100vw - 40px);
+            height: 440px;
+            max-height: calc(100vh - 170px);
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.35);
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 9999;
+        }
+        .chat-header { background: var(--primary); color: #000; padding: 12px 15px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .chat-header button { background: none; border: none; font-size: 18px; cursor: pointer; color: #000; }
+        #chat-body { flex: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+        .msg { max-width: 85%; padding: 8px 12px; border-radius: 10px; font-size: 0.85rem; line-height: 1.4; word-wrap: break-word; }
+        .msg-bot { background: var(--bg-color); border: 1px solid var(--border); align-self: flex-start; }
+        .msg-user { background: var(--primary); color: #000; align-self: flex-end; }
+        .msg a { color: var(--primary); font-weight: bold; }
+        .chat-footer { display: flex; padding: 10px; gap: 8px; border-top: 1px solid var(--border); }
+        .chat-footer input { flex: 1; min-width: 0; }
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .chip { background: transparent; border: 1px solid var(--primary); color: var(--primary); border-radius: 14px; padding: 4px 10px; font-size: 0.75rem; cursor: pointer; }
+        .chip:hover { background: var(--primary); color: #000; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-bar">
+            <div class="header-title">ibtahajdev.site</div>
+            <div class="header-actions">
+                <button class="header-btn" onclick="openModal('feedbackModal')">💬 Feedback</button>
+                <button class="header-btn" onclick="openModal('paymentModal')">🎓 Coaching</button>
+                <button class="header-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+            </div>
+        </div>
+
+        <div class="banner" id="notifBanner">
+            <span>Welcome to our platform! Stay updated by enabling notifications.</span>
+            <div>
+                <button onclick="enableNotifications()">Enable</button>
+                <button onclick="hideBanner()">Dismiss</button>
+            </div>
+        </div>
+
+        <input type="text" id="searchInput" class="search-input" placeholder="Search platforms..." aria-label="Search platforms">
+
+        <div class="tabs-container" id="tabs"></div>
+        <div class="showing-count" id="showingCount"></div>
+
+        <div class="card pro-card">
+            <h3>Pro Coaching Plan</h3>
+            <p class="muted" style="margin-bottom:0">Get 1-on-1 profile setup and earning guidance.</p>
+            <button class="btn-action" onclick="openModal('paymentModal')">Subscribe for $10/mo</button>
+        </div>
+
+        <div id="platformsList"></div>
+        <p id="no-results">No platforms match your search.</p>
+
+        <div class="card" style="border-color: var(--primary);">
+            <h3>📬 Stay Updated</h3>
+            <p class="muted">Subscribe to get new earning platform alerts and guide updates.</p>
+            <form id="newsletterForm" class="form-row">
+                <input type="email" class="form-control" placeholder="Enter your email" required aria-label="Email">
+                <button type="submit" class="btn-action inline-btn">Subscribe</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h3>📝 Guides & Insights</h3>
+            <p class="muted">Learn how to maximize your earnings safely online.</p>
+            <div class="blog-item">
+                <a class="blog-title" onclick="openGuide('upwork')">How to Earn on Upwork as a Beginner</a>
+                <span style="font-size:0.75rem;color:var(--text-muted)">5 min read • Freelancing</span>
+            </div>
+            <div class="blog-item">
+                <a class="blog-title" onclick="openGuide('surveys')">Top Survey Platforms Guide</a>
+                <span style="font-size:0.75rem;color:var(--text-muted)">4 min read • Surveys</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>💬 Community Discussion</h3>
+            <p class="muted">Ask questions and share experiences with other users.</p>
+            <div id="postsContainer">
+                <div class="forum-post"><div class="forum-author">@Ali_Raza</div><div>Has anyone received direct Payoneer payouts from Freecash this week?</div></div>
+                <div class="forum-post"><div class="forum-author">@Sara_K</div><div>Swagbucks survey payouts hit my account today! Recommended for beginners.</div></div>
+            </div>
+            <form id="commentForm" class="form-row" style="margin-top:12px;">
+                <input type="text" id="commentInput" class="form-control" placeholder="Join the discussion..." required maxlength="300" aria-label="Comment">
+                <button type="submit" class="btn-action inline-btn">Post</button>
+            </form>
+        </div>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 ibtahajdev.site. All rights reserved.</p>
+            <p style="margin-top: 6px;">
+                <a href="#" onclick="openModal('privacyModal'); return false;">Privacy Policy</a> | 
+                <a href="#" onclick="openModal('termsModal'); return false;">Terms of Service</a> | 
+                <a href="#" onclick="openModal('aboutModal'); return false;">About Us</a>
+            </p>
+        </footer>
+    </div>
+
+    <button class="floating-shahbot" onclick="toggleChat()">🤖 Ask ShahBot</button>
+
+    <div id="chat-window">
+        <div class="chat-header"><span>🤖 ShahBot Guide</span><button onclick="toggleChat()" aria-label="Close chat">✖</button></div>
+        <div id="chat-body">
+            <div class="msg msg-bot">Hi! I'm <b>ShahBot</b>. Ask me to recommend a platform, compare two (e.g. "Upwork vs Fiverr"), or explain a platform's fees and payouts.<div class="chips"><button class="chip" data-q="Best for beginners">Best for beginners</button><button class="chip" data-q="Lowest minimum payout">Lowest minimum payout</button><button class="chip" data-q="Is it safe?">Is it safe?</button><button class="chip" data-q="Upwork vs Fiverr">Upwork vs Fiverr</button></div></div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" class="form-control" placeholder="Ask me anything..." aria-label="Platform name">
+            <button class="btn-action inline-btn" id="chat-send">Send</button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModals()" aria-label="Close">&times;</button>
+            <h3>💎 Pro Coaching Plan</h3>
+            <p class="muted">Accelerate your learning with personal 1-on-1 guidance.</p>
+            <ul style="font-size:0.85rem;color:var(--text-muted);padding-left:20px;margin:12px 0;line-height:1.6;">
+                <li>Step-by-step account setup guidance</li>
+                <li>Profile optimization tips</li>
+                <li>Guidance on payout options</li>
+            </ul>
+            <div style="background:var(--bg-color);padding:12px;border-radius:8px;text-align:center;margin:16px 0;">
+                <p style="font-size:0.85rem;">Send <strong>$10/mo</strong> payment via Payoneer to:</p>
+                <p style="margin-top:4px;font-weight:bold;color:var(--primary);word-break:break-all;">syedibtahaj1@gmail.com</p>
+            </div>
+            <button class="btn-action" onclick="closeModals()">Got it</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="feedbackModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModals()" aria-label="Close">&times;</button>
+            <h3>💬 Platform Feedback</h3>
+            <p class="muted">Share your thoughts or suggest new earning platforms.</p>
+            <form id="feedbackForm">
+                <textarea id="feedbackText" class="form-control" placeholder="Write your feedback here..." rows="4" style="width:100%;margin-bottom:12px;" required></textarea>
+                <button type="submit" class="btn-action">Send Feedback by Email</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="privacyModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModals()">&times;</button>
+            <h3>Privacy Policy</h3>
+            <p class="muted" style="line-height:1.5;">At ibtahajdev.site, we respect your privacy. We collect minimal information such as email addresses for newsletter delivery when explicitly submitted. We use third-party tools like Google Tag Manager and Google AdSense, which may use cookies to serve personalized ads based on your visits to this and other websites. You may opt out of personalized advertising by visiting Google's Ads Settings.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModals()">&times;</button>
+            <h3>Terms of Service</h3>
+            <p class="muted" style="line-height:1.5;">All directory listings and information on ibtahajdev.site are provided for educational and informational purposes only. We do not guarantee income or earnings on any third-party platforms listed. Users are encouraged to review the terms and conditions of each external platform prior to registration.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="aboutModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModals()">&times;</button>
+            <h3>About Us</h3>
+            <p class="muted" style="line-height:1.5;">ibtahajdev.site is a curated directory and educational resource designed to help freelancers, content creators, and digital workers discover verified online earning platforms, compare payout thresholds, and learn best practices.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="guideModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModals()">&times;</button>
+            <h3 id="guideTitle">Guide Title</h3>
+            <p class="muted" id="guideBody" style="line-height:1.6; margin-top:12px;"></p>
+        </div>
+    </div>
+
+    <script>
+        const platforms = [
+            ["▶️","YouTube","Content Creation",4.9,"$100","https://youtube.com","Earn via ad revenue (YouTube Partner Program), Channel Memberships, and Super Chats.","https://support.google.com/youtube/answer/72851"],
+            ["🟢","Rumble","Content Creation",4.5,"$50","https://rumble.com","Video creator licensing and ad revenue shares.","https://rumble.com/s/terms"],
+            ["🟪","Twitch","Content Creation",4.7,"$50","https://twitch.tv","Monetize live streaming via subscriptions, Bits, and ads once you reach Affiliate or Partner status.","https://www.twitch.tv/p/en/legal/terms-of-service/"],
+            ["🟦","Dailymotion","Content Creation",4.2,"$100","https://dailymotion.com","Ad monetization through the Dailymotion Partner Program, paid at a minimum threshold.","https://legal.dailymotion.com/en/terms-of-use/"],
+            ["📰","Substack","Content Creation",4.8,"$10","https://substack.com","Writers can charge paid subscriptions directly to readers. Substack takes a 10% fee.","https://substack.com/tos"],
+            ["💼","Upwork","Freelancing",4.8,"$100","https://upwork.com","Connects clients and freelancers, with payouts via Payoneer or wire.","https://support.upwork.com/hc/en-us/articles/211068208-Service-Fees-for-Freelancers"],
+            ["🟩","Fiverr","Freelancing",4.7,"$5","https://fiverr.com","Package services as Gigs starting from $5. Fiverr keeps a 20% commission.","https://www.fiverr.com/content/payments-terms-and-conditions"],
+            ["🦅","Freelancer","Freelancing",4.4,"$30","https://freelancer.com","Bid on project contests and milestone-based contracts.","https://www.freelancer.com/feesandcharges"],
+            ["🧘","Guru","Freelancing",4.3,"$5","https://guru.com","Flexible freelance agreements; membership tier sets your fee rate.","https://www.guru.com/help/freelancer-help/getting-started/membership-types-and-fees/"],
+            ["⭐","Swagbucks","Surveys & Rewards",4.5,"$3","https://swagbucks.com","Earn points for surveys, searching, shopping and gift card redemptions.","https://www.swagbucks.com/g/terms"],
+            ["☑️","Survey Junkie","Surveys & Rewards",4.5,"$5","https://surveyjunkie.com","Complete market research surveys; cash out via PayPal or bank transfer at 500 points ($5).","https://www.surveyjunkie.com/terms"],
+            ["🎯","Branded Surveys","Surveys & Rewards",4.5,"$5","https://surveys.gobranded.com","Targeted consumer surveys; cash out at 500 points ($5).","https://surveys.gobranded.com/terms-of-service/"],
+            ["📥","InboxDollars","Surveys & Rewards",4.4,"$15","https://inboxdollars.com","Cash rewards for surveys, emails, games and offers.","https://www.inboxdollars.com/g/terms"],
+            ["🛍️","Rakuten","Cashback & Shopping",4.8,"$10","https://rakuten.com","Quarterly cashback via check or PayPal on partner purchases.","https://www.rakuten.com/help/article/terms-of-member-benefits-360001614747"],
+            ["🛒","Ibotta","Cashback & Shopping",4.7,"$20","https://ibotta.com","Grocery and retail receipt scanning with cash back.","https://home.ibotta.com/terms"],
+            ["🐕","Fetch Rewards","Cashback & Shopping",4.6,"$3","https://fetch.com","Scan receipts from any store to earn points for gift cards.","https://www.fetch.com/tos"],
+            ["🐷","Receipt Hog","Cashback & Shopping",4.3,"$5","https://receipthog.com","Earn coins for receipts, exchangeable for Amazon or Visa gift cards.","https://receipthog.com/terms"],
+            ["⚡","Upside","Cashback & Shopping",4.5,"$10","https://upside.com","Cash back on gas, groceries and restaurant purchases.","https://www.upside.com/terms"],
+            ["🎁","Perk TV","Videos & Rewards",4.1,"$5","https://perk.com","Earn points watching short clips and trailers.","https://perk.com/terms"],
+            ["📺","Hideout.tv","Videos & Rewards",4.3,"$1","https://hideout.co","Watch videos for points redeemable on connected reward sites.","https://hideout.co/terms.php"],
+            ["🎮","InstaGC","Videos & Rewards",4.4,"$1","https://instagc.com","Gift cards for watching videos and completing tasks.","https://www.instagc.com/terms/"],
+            ["💎","GG2U","Videos & Rewards",4.5,"$7","https://premium.gg2u.org","Gamer-focused video and offer-wall payouts via crypto or PayPal.","https://www.gg2u.org/terms.asp"],
+            ["🪙","Earnably","Videos & Rewards",4.3,"$1","https://earnably.com","Tasks, videos and surveys paid as wallet or gift card rewards.","https://earnably.com/terms"],
+            ["🕹️","Mistplay","Gaming & Rewards",4.5,"$5","https://mistplay.com","Android gaming loyalty app paying gift cards for playing games.","https://www.mistplay.com/terms-of-use"],
+            ["💵","Freecash","Gaming & Rewards",4.8,"$0.50","https://freecash.com","Complete offers and game tasks for crypto, PayPal or gift cards.","https://freecash.com/terms"],
+            ["💳","KashKick","Gaming & Rewards",4.2,"$10","https://kashkick.com","Play mobile games and try services; PayPal payout at $10.","https://kashkick.com/terms"],
+            ["👑","PrizeRebel","Gaming & Rewards",4.6,"$5","https://prizerebel.com","Earn points playing games and completing paid surveys.","https://www.prizerebel.com/terms.php"]
+        ].map(([icon, name, cat, rating, min, url, guide, policy]) => ({icon, name, cat, rating, min, url, guide, policy}));
+
+        const categories = [
+            ["All", "All"], ["Content Creation", "Content"], ["Freelancing", "Freelancing"],
+            ["Surveys & Rewards", "Surveys"], ["Cashback & Shopping", "Cashback & Shopping"],
+            ["Videos & Rewards", "Videos & Rewards"], ["Gaming & Rewards", "Gaming & Rewards"]
+        ];
+
+        let activeCategory = 'All';
+
+        function esc(s) {
+            return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        }
+
+        function render() {
+            const tabs = document.getElementById('tabs');
+            categories.forEach(([cat, label]) => {
+                const n = cat === 'All' ? platforms.length : platforms.filter(p => p.cat === cat).length;
+                const b = document.createElement('button');
+                b.className = 'tab' + (cat === 'All' ? ' active' : '');
+                b.textContent = `${label} (${n})`;
+                b.addEventListener('click', () => {
+                    tabs.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    b.classList.add('active');
+                    activeCategory = cat;
+                    filterPlatforms();
+                });
+                tabs.appendChild(b);
+            });
+
+            const list = document.getElementById('platformsList');
+            platforms.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'card platform-item';
+                card.dataset.category = p.cat;
+                card.dataset.name = p.name.toLowerCase();
+                card.innerHTML = `
+                    <div class="platform-header"><span class="platform-name">${esc(p.icon)} ${esc(p.name)}</span></div>
+                    <div class="platform-meta">
+                        <span class="rating">★ ${p.rating}</span>
+                        <span class="min-payout">💵 Min ${esc(p.min)}</span>
+                        <span class="category-tag">${esc(p.cat)}</span>
+                    </div>
+                    <a class="btn-action" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">Visit Platform</a>
+                    <button class="btn-action btn-secondary" type="button">Ask ShahBot Policy</button>`;
+                card.querySelector('button').addEventListener('click', () => askShahbot(p.name));
+                list.appendChild(card);
+            });
+            filterPlatforms();
+        }
+
+        function filterPlatforms() {
+            const q = document.getElementById('searchInput').value.toLowerCase().trim();
+            const items = document.querySelectorAll('.platform-item');
+            let visible = 0;
+            items.forEach(item => {
+                const ok = (activeCategory === 'All' || item.dataset.category === activeCategory)
+                        && (item.dataset.name.includes(q) || item.dataset.category.toLowerCase().includes(q));
+                item.style.display = ok ? 'block' : 'none';
+                if (ok) visible++;
+            });
+            document.getElementById('showingCount').textContent = `Showing ${visible} of ${items.length} platforms`;
+            document.getElementById('no-results').style.display = visible ? 'none' : 'block';
+        }
+
+        function applyTheme(light) {
+            document.body.classList.toggle('light-mode', light);
+            document.getElementById('themeToggleBtn').textContent = light ? '☀️' : '🌙';
+        }
+        function toggleTheme() {
+            const light = !document.body.classList.contains('light-mode');
+            applyTheme(light);
+            try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch (e) {}
+        }
+
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModals() { document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none'); }
+
+        function openGuide(type) {
+            const titleEl = document.getElementById('guideTitle');
+            const bodyEl = document.getElementById('guideBody');
+            if (type === 'upwork') {
+                titleEl.textContent = 'How to Earn on Upwork as a Beginner';
+                bodyEl.textContent = 'Starting on Upwork requires a focused profile and a strong proposal strategy. Highlight concrete skills like web development, software testing, or graphic design. Apply for entry-level projects to gain initial ratings and build client trust.';
+            } else {
+                titleEl.textContent = 'Top Survey Platforms Guide';
+                bodyEl.textContent = 'Survey sites like Swagbucks and Survey Junkie offer rewards for user feedback. To maximize returns, ensure your profile details are complete to receive higher-qualifying surveys.';
+            }
+            openModal('guideModal');
+        }
+
+        function hideBanner() { document.getElementById('notifBanner').style.display = 'none'; }
+        function enableNotifications() {
+            if (!('Notification' in window)) { hideBanner(); return; }
+            Promise.resolve(Notification.requestPermission()).then(p => {
+                if (p === 'granted') {
+                    try { new Notification('Welcome!', { body: 'You will now receive updates from our platform.' }); } catch (e) {}
+                }
+                hideBanner();
+            });
+        }
+
+        function addComment(e) {
+            e.preventDefault();
+            const input = document.getElementById('commentInput');
+            const text = input.value.trim();
+            if (!text) return;
+            const post = document.createElement('div');
+            post.className = 'forum-post';
+            const author = document.createElement('div');
+            author.className = 'forum-author';
+            author.textContent = '@You';
+            const body = document.createElement('div');
+            body.textContent = text;
+            post.append(author, body);
+            document.getElementById('postsContainer').appendChild(post);
+            input.value = '';
+        }
+
+        function toggleChat() {
+            const w = document.getElementById('chat-window');
+            w.style.display = w.style.display === 'flex' ? 'none' : 'flex';
+        }
+        function askShahbot(name) {
+            document.getElementById('chat-window').style.display = 'flex';
+            respond(name);
+        }
+        function addMsg(html, who) {
+            const body = document.getElementById('chat-body');
+            const d = document.createElement('div');
+            d.className = 'msg msg-' + who;
+            d.innerHTML = html;
+            body.appendChild(d);
+            body.scrollTop = body.scrollHeight;
+        }
+
+        const minOf = p => parseFloat(p.min.replace('$', ''));
+        const names = arr => arr.map(p => `<b>${esc(p.name)}</b>`).join(', ');
+        const inCat = c => platforms.filter(p => p.cat === c);
+        const chips = arr => `<div class="chips">${arr.map(c => `<button class="chip" data-q="${esc(c)}">${esc(c)}</button>`).join('')}</div>`;
+        const link = p => `<a href="${esc(p.policy)}" target="_blank" rel="noopener noreferrer">Official ${esc(p.name)} terms</a>`;
+        const CONFIRM = '<br><small>Details change, so confirm on the official page.</small>';
+        const MAIN_CHIPS = ['Best for beginners', 'Lowest minimum payout', 'Freelancing', 'Is it safe?', 'List categories'];
+
+        function mentioned(t) {
+            return platforms.filter(p => {
+                const n = p.name.toLowerCase();
+                const short = n.replace(/\.tv$| tv$| rewards$/, '');
+                return t.includes(n) || (short.length >= 4 && new RegExp('\\b' + short.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b').test(t));
+            });
+        }
+
+        function answer(raw) {
+            const t = raw.toLowerCase().trim();
+            const has = re => re.test(t);
+            const hit = mentioned(t);
+
+            if (hit.length >= 2) {
+                const rows = hit.slice(0, 3).map(p => `<b>${esc(p.name)}</b> (${esc(p.cat)}): min ${esc(p.min)}. ${esc(p.guide)}`).join('<br><br>');
+                return rows + '<br><br>Which is better depends on your skills and goals. Compare their terms before choosing.' + CONFIRM;
+            }
+
+            if (hit.length === 1) {
+                const p = hit[0];
+                if (has(/legit|safe|scam|real|trust/))
+                    return `I can't vouch for any platform, but ${esc(p.name)} has public terms you can check: ${link(p)}. Never pay to join, and start with small withdrawals to test it.${CONFIRM}`;
+                if (has(/fee|commission|cost|charge|cut|deduct/))
+                    return `<b>${esc(p.name)}:</b> ${esc(p.guide)}<br><br>Fees and commissions are set in the platform's terms: ${link(p)}.${CONFIRM}`;
+                if (has(/min|payout|withdraw|cash ?out|threshold|get paid|pay ?out/))
+                    return `<b>${esc(p.name)}</b> lists a minimum of about <b>${esc(p.min)}</b>. ${esc(p.guide)}<br><br>${link(p)}${CONFIRM}`;
+                if (has(/visit|website|site|join|sign ?up|register|open/))
+                    return `Here you go: <a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">${esc(p.name)}</a>. Read ${link(p)} before you sign up.`;
+                return `<b>${esc(p.name)}</b> (${esc(p.cat)}, min ${esc(p.min)}): ${esc(p.guide)}<br><br>📄 ${link(p)}${chips(['Fees for ' + p.name, 'Minimum payout ' + p.name, 'Is ' + p.name + ' safe?'])}`;
+            }
+
+            if (has(/^(hi|hello|hey|salam|assalam|yo)\b/))
+                return 'Hello! I can recommend platforms, compare two of them, show minimum payouts, or explain how a platform pays. What are you looking for?' + chips(MAIN_CHIPS);
+            if (has(/thank|thanks|shukriya/))
+                return "You're welcome! Ask me anything else about the platforms.";
+            if (has(/scam|safe|legit|trust|fake|pay to join|pay a fee|too good/))
+                return '<b>Staying safe:</b><br>• Never pay to join or to "unlock" a payout<br>• Be wary of guaranteed or "easy" income claims<br>• Read the terms and payout rules first<br>• Test with a small withdrawal<br>• Use a separate email address' + chips(['Best for beginners', 'Lowest minimum payout']);
+            if (has(/tax/))
+                return 'Online earnings may be taxable depending on where you live. Platforms often report earnings above certain limits. Check your local tax rules or ask an accountant.';
+            if (has(/categor|all platforms|list|what platforms|show me|options/))
+                return ['Content Creation', 'Freelancing', 'Surveys & Rewards', 'Cashback & Shopping', 'Videos & Rewards', 'Gaming & Rewards']
+                    .map(c => `<b>${esc(c)}</b> (${inCat(c).length}): ${inCat(c).map(p => esc(p.name)).join(', ')}`).join('<br><br>');
+            if (has(/lowest|smallest|cheapest|min|threshold|cash ?out|withdraw/)) {
+                const top = [...platforms].sort((a, b) => minOf(a) - minOf(b)).slice(0, 6);
+                return '<b>Lowest listed minimums:</b><br>' + top.map(p => `• ${esc(p.name)}: ${esc(p.min)}`).join('<br>') + '<br><small>A low minimum does not mean fast or easy earnings. Check each platform\'s terms.</small>';
+            }
+            if (has(/beginner|start|new|no experience|no skill|easy|simple|zero/))
+                return `With no experience, the simplest starting points are surveys and cashback: ${names(inCat('Surveys & Rewards'))} and ${names(inCat('Cashback & Shopping').slice(0, 3))}. Expect small amounts. Freelancing (${names(inCat('Freelancing'))}) pays better but needs a skill you can sell.` + chips(['Freelancing', 'Lowest minimum payout', 'Is it safe?']);
+            if (has(/freelanc|skill|client|gig|job|design|writing|programming|developer|translate/))
+                return `Freelancing platforms: ${names(inCat('Freelancing'))}. You list a skill (writing, design, coding, etc.) and clients pay you, minus the platform's fee.` + chips(['Upwork vs Fiverr', 'Fees for Fiverr', 'Best for beginners']);
+            if (has(/video|stream|creator|content|youtube|channel|blog|newsletter|write|podcast/))
+                return `Content platforms: ${names(inCat('Content Creation'))}. You create videos, streams or newsletters and earn from ads, subscriptions or tips. It takes time to build an audience.` + chips(['YouTube', 'Substack', 'Twitch']);
+            if (has(/survey|opinion|questionnaire/))
+                return `Survey platforms: ${names(inCat('Surveys & Rewards'))}. You answer questions for points. Pay per survey is small.` + chips(['Swagbucks', 'Survey Junkie']);
+            if (has(/cashback|cash back|receipt|shop|grocer|gas|store/))
+                return `Cashback platforms: ${names(inCat('Cashback & Shopping'))}. Many are focused on specific countries, so check availability where you live.` + chips(['Rakuten', 'Ibotta', 'Fetch Rewards']);
+            if (has(/game|gaming|play/))
+                return `Gaming platforms: ${names(inCat('Gaming & Rewards'))}. You earn rewards for playing games or trying apps. Read each offer's requirements before you start.`;
+            if (has(/watch|tv|stream.*reward|video.*reward/))
+                return `Video reward platforms: ${names(inCat('Videos & Rewards'))}. You earn points for watching videos, which add up slowly.`;
+            if (has(/paypal|payoneer|crypto|bitcoin|gift ?card|bank|wire|check/)) {
+                const term = (t.match(/paypal|payoneer|crypto|bitcoin|gift ?card|bank|wire|check/) || [''])[0];
+                const found = platforms.filter(p => p.guide.toLowerCase().includes(term.replace(/\s/g, '').replace('giftcard', 'gift card')));
+                return found.length
+                    ? `Platforms that mention <b>${esc(term)}</b>: ${names(found)}. Payout methods can vary by country, so check each platform's terms.`
+                    : `I don't have a platform here that mentions ${esc(term)}. Check each platform's terms for payout methods.`;
+            }
+            if (has(/coach|subscribe|plan|mentor/))
+                return 'Use the 🎓 Coaching button at the top of the page for details about the coaching plan.';
+            if (has(/help|what can you|how do you|commands/))
+                return 'I can: recommend platforms ("best for beginners"), compare two ("Upwork vs Fiverr"), show minimum payouts, explain fees or payout for a platform, and give safety tips.' + chips(MAIN_CHIPS);
+
+            const words = t.split(/\W+/).filter(w => w.length > 2);
+            const near = platforms.filter(p => words.some(w => p.name.toLowerCase().includes(w) || p.guide.toLowerCase().includes(w))).slice(0, 4);
+            return (near.length ? `I'm not sure what you mean, but these might help: ${names(near)}.<br><br>` : "I didn't quite get that.<br><br>") + 'Try asking one of these:' + chips(MAIN_CHIPS);
+        }
+
+        function respond(query) {
+            addMsg(esc(query), 'user');
+            setTimeout(() => addMsg(answer(query), 'bot'), 250);
+        }
+        function sendChat() {
+            const input = document.getElementById('chat-input');
+            const t = input.value.trim();
+            if (!t) return;
+            input.value = '';
+            respond(t);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            try { applyTheme(localStorage.getItem('theme') === 'light'); } catch (e) {}
+
+            render();
+
+            if ('Notification' in window && Notification.permission === 'default') {
+                document.getElementById('notifBanner').style.display = 'flex';
+            }
+
+            document.getElementById('searchInput').addEventListener('input', filterPlatforms);
+            document.getElementById('commentForm').addEventListener('submit', addComment);
+            document.getElementById('chat-send').addEventListener('click', sendChat);
+            document.getElementById('chat-body').addEventListener('click', e => {
+                const c = e.target.closest('.chip');
+                if (c) respond(c.dataset.q);
+            });
+            document.getElementById('chat-input').addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
+
+            document.getElementById('newsletterForm').addEventListener('submit', e => {
+                e.preventDefault();
+                e.target.reset();
+                alert('Thank you for subscribing!');
+            });
+
+            document.getElementById('feedbackForm').addEventListener('submit', e => {
+                e.preventDefault();
+                const msg = document.getElementById('feedbackText').value.trim();
+                window.location.href = 'mailto:syedibtahaj1@gmail.com?subject=' +
+                    encodeURIComponent('Site feedback') + '&body=' + encodeURIComponent(msg);
+                e.target.reset();
+                closeModals();
+            });
+
+            document.querySelectorAll('.modal-overlay').forEach(o =>
+                o.addEventListener('click', e => { if (e.target === o) closeModals(); }));
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModals(); });
+        });
+    </script>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCJX7KG5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+</body>
+</html>
+
